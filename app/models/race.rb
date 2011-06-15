@@ -45,6 +45,13 @@ class Race
     end
   end
   
+  def runs_with_runners
+    runs.map do |run|
+      run.runner = runners.find{|runner| runner.id == run.runner_id}
+      run
+    end
+  end
+  
   def results
     @results ||= runs.map {|run|
       run.runner = runners.find{|runner| runner.id == run.runner_id}
@@ -64,7 +71,7 @@ class Race
   end
   
   def run(user)
-    runs << Run.new(runner_id: user.id)
+    runs << Run.new(runner_id: user.id, start_number: (runs.map(&:start_number).max || 0) + 1)
     is_dirty
   end
   

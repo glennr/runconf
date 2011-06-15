@@ -1,4 +1,5 @@
 class RacesController < ApplicationController
+  include RacePdfHelper
   before_filter :require_login, except: [:show, :index]
   
   def index
@@ -26,11 +27,18 @@ class RacesController < ApplicationController
   
   def show
     @race = db.load! params[:id]
-    if params[:show] == 'results'
-      @results = @race.results
-      render 'results' 
-    else
-      @runners = @race.runners
+    respond_to do |format|
+      format.html do
+        if params[:show] == 'results'
+          @results = @race.results
+          render 'results' 
+        else
+          @runners = @race.runners
+        end
+      end
+      format.pdf do
+        render text: start_numbers_pdf(@race)
+      end
     end
   end
   

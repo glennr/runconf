@@ -9,6 +9,7 @@ gem 'omniauth'
 gem 'hoptoad_notifier'
 gem 'girl_friday'
 gem 'httparty'
+gem 'prawn'
 
 group :development do
   gem 'rspec-rails'

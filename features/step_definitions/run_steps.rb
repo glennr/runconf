@@ -40,7 +40,7 @@ Then /^I should not see that "([^"]*)" is running$/ do |name|
 end
 
 Then /^I should see that "([^"]*)" finished on position "([^"]*)" after "([^"]*)"$/ do |name, position, time|
-  page.should have_xpath("//tr[child::td[contains(., '#{name}')]][child::td[contains(., '#{position}')]][child::td[contains(., '#{time}')]]")
+  page.should have_xpath("//tr[child::td[contains(., '#{name}')]][child::td[contains(., '#{position}')]][child::td/input[contains(@value, '#{time}')]]")
 end
 
 Then /^I should see that "([^"]*)" finished before "([^"]*)"$/ do |name1, name2|

@@ -42,6 +42,12 @@ When /^I change the name of the race "([^"]*)" to "([^"]*)"$/ do |name, new_name
   click_button 'Update Race'
 end
 
+When /^I download the start numbers pdf for "([^"]*)"$/ do |name|
+  race = DB.view(Race.by_name(name)).first
+  visit race_path(race)
+  click_link 'Start Numbers PDF'
+end
+
 Then /^there should be a race "([^"]*)"$/ do |name|
   visit account_path
   page.should have_css('.race', text: name)
@@ -54,4 +60,17 @@ end
 
 Then 'I should see the race map' do
   page.should have_css('#race_map')
+end
+
+Then /^I should see "([^"]*)" with the number "([^"]*)"$/ do |name, start_number|
+  text = pdf_to_text(page.body)
+  pdf_to_text(page.body).should include("#{start_number}\n#{name}")
+end
+
+def pdf_to_text(pdf_text)
+  File.open(Rails.root.join('tmp/page.pdf'), 'w:ASCII-8BIT') do |f|
+    f << pdf_text
+  end
+  `pdftotext -q #{Rails.root.join('tmp/page.pdf')} #{Rails.root.join('tmp/page.txt')}`
+  File.read(Rails.root.join('tmp/page.txt'))
 end

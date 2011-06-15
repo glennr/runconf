@@ -6,7 +6,15 @@ describe Race, '#run' do
     
     race.run stub(:user, id: 'user-1')
     
-    race.runs.should == [Run.new(runner_id: 'user-1')]
+    race.runs.should == [Run.new(runner_id: 'user-1', start_number: 1)]
+  end
+  
+  it "counts up the start numbers" do
+    race = Race.new(runs: [stub(:run, start_number: 5)])
+    
+    Run.should_receive(:new).with(hash_including(start_number: 6))
+    
+    race.run stub(:user, id: 'user-1')
   end
 end
 
