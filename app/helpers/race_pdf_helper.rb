@@ -2,7 +2,7 @@ require "prawn/measurement_extensions"
 
 module RacePdfHelper
   def start_numbers_pdf(race)
-    pdf = Prawn::Document.new(page_size: 'A4', page_layout: :landscape, margin: 4.cm, bottom_margin: 1.cm)
+    pdf = Prawn::Document.new(page_size: 'A4', page_layout: :landscape, margin: 2.cm, bottom_margin: 1.cm)
     
     
     race.runs_with_runners.each do |run|
@@ -15,10 +15,29 @@ module RacePdfHelper
       pdf.start_new_page
     end
     
+    pdf.font_size 15
+    pdf.text "#{race.name} Results"
+    pdf.move_down 1.cm
+    pdf.font_size 12
+    add_results_table(pdf, race)
+    
     pdf.render
   end
   
+  def add_results_table(pdf, race)
+    pdf.table [['Position', 'Start Number', 'Time']] + empty_rows(race.runs.size + 5), header: true,
+      width: 700 do
+    end
+  end
+  
+  def empty_rows(size)
+    (1..size).map do |position|
+      [position, '', '']
+    end
+  end
+  
   def add_racer(pdf, name = nil, start_number, race)
+    pdf.move_down 2.cm
     pdf.font_size 250
     pdf.text start_number.to_s, align: :center
     pdf.move_up 50
