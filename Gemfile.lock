@@ -20,8 +20,17 @@ GEM
       activesupport (= 3.0.3)
       builder (~> 2.1.2)
       i18n (~> 0.4)
+    activerecord (3.0.3)
+      activemodel (= 3.0.3)
+      activesupport (= 3.0.3)
+      arel (~> 2.0.2)
+      tzinfo (~> 0.3.23)
+    activeresource (3.0.3)
+      activemodel (= 3.0.3)
+      activesupport (= 3.0.3)
     activesupport (3.0.3)
     addressable (2.2.6)
+    arel (2.0.10)
     builder (2.1.2)
     capybara (0.4.0)
       celerity (>= 0.7.9)
@@ -144,6 +153,14 @@ GEM
       ruby-openid (>= 2.1.8)
     rack-test (0.5.6)
       rack (>= 1.0)
+    rails (3.0.3)
+      actionmailer (= 3.0.3)
+      actionpack (= 3.0.3)
+      activerecord (= 3.0.3)
+      activeresource (= 3.0.3)
+      activesupport (= 3.0.3)
+      bundler (~> 1.0)
+      railties (= 3.0.3)
     railties (3.0.3)
       actionpack (= 3.0.3)
       activesupport (= 3.0.3)
@@ -203,6 +220,7 @@ DEPENDENCIES
   launchy
   omniauth
   prawn
+  rails
   railties
   rspec-rails
   webmock

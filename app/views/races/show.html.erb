@@ -23,7 +23,7 @@
 
 <p>Organized by: <%= link_to @race.organizer.name, @race.organizer %></p>
 
-<h2>Runners</h2>
+<h2>Drinkers</h2>
 <% if current_user && !@race.runners.include?(current_user) %>
   <p><%= link_to 'Run this race', race_run_path(@race), method: 'post' %></p>
 <% elsif current_user %>
@@ -38,5 +38,5 @@
   <% end %>
 </ul>
 <% else %>
-  <p>Nobody is running this race yet.</p>
+  <p>Nobody is drinking yet.</p>
 <% end %>

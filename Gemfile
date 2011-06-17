@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'rails'
 gem 'railties'
 gem 'actionpack'
 gem 'actionmailer'
