@@ -2,13 +2,11 @@
   padding-top: 15px;
   font-size: 2.4em;
   font-weight: bold;
-  background: gray;
   height: 70px;
   color: black;
 }
 
 .navigation {
-  background: rgb(163,163,163);
   width: 100%;
   margin-bottom: 2em;
 }
