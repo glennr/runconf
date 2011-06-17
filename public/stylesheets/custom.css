@@ -3,7 +3,7 @@
   font-size: 2.4em;
   font-weight: bold;
   height: 70px;
-  color: black;
+  color: white;
 }
 
 .navigation {
@@ -17,6 +17,7 @@
   font-size: 1.2em;
   text-decoration: none;
   padding: 5px;
+  background: #0077aa;
 }
 
 .navigation a:hover {
