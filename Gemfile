@@ -11,6 +11,7 @@ gem 'hoptoad_notifier'
 gem 'girl_friday'
 gem 'httparty'
 gem 'prawn'
+gem 'heroku'
 
 group :development do
   gem 'rspec-rails'
